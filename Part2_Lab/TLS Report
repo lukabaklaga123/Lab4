@@ -1,0 +1,24 @@
+1. Explanation of the TLS Handshake 
+
+The TLS handshake is the process by which a client (such as your browser) and a server (e.g., google.com) establish a secure session. It involves the following main steps:
+Client Hello: The browser sends a  message, which lists the supported TLS versions and cipher suites, along with a random number (Client Random).
+Server Hello & Certificate: The server selects the strongest cipher suite it supports. It then sends a 'Server Hello' message containing its choice, a random number (Server Random), and its digital certificate.
+Client Verifies Certificate: The browser checks that the server's certificate was signed by a trusted Certificate Authority (CA) included in its trust store (such as DigiCert or Let's Encrypt). This process confirms that the server is authentic.
+Key Exchange: The client and server use the asymmetric algorithm specified in the cipher suite (e.g., ECDH) to securely generate a shared secret key. This process is protected against eavesdropping and provides forward secrecy.
+Session Keys Generated: Both parties independently use the Client Random, Server Random, and the shared secret to derive an identical set of symmetric session keys (e.g., an AES key for encryption and an HMAC key for integrity).
+Both parties send a 'Finished' message, encrypted with the new session key, to confirm that the handshake was successful.
+
+2. Man-in-the-Middle (MITM) Protection Mechanisms
+
+The primary defense against Man-in-the-Middle (MITM) attacks in TLS is certificate validation.
+An MITM attacker can intercept your  to send you their own certificate instead of the legitimate server's.
+However, the attacker's certificate will not be signed by a trusted Certificate Authority (CA).
+Your browser will detect this invalid signature, terminate the connection, and display a security warning (e.g.,  connection is not private)
+This check ensures that you are communicating directly with the authentic server and not an impostor.
+
+3. TLS Application in Websites: How It Secures HTTPS
+
+TLS (Transport Layer Security) is the  in HTTPS. It provides three core security services for online communication:
+Confidentiality (Encryption): After the handshake, all data such as your login credentials, password, or credit card details is encrypted using a fast symmetric session key (e.g., AES). An eavesdropper can only see scrambled, unreadable data.
+Integrity (Authentication): All data is protected by a Message Authentication Code (MAC), such as HMAC-SHA256. This keyed hash ensures that the data has not been altered or tampered with during transit.
+Authentication: The TLS handshake, utilizing the digital certificate, verifies the server's identity. It ensures that you are connected to the legitimate  and not to a fraudulent website created by an attacker.
