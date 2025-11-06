@@ -1,15 +1,16 @@
 Explanation of RSA vs. AES Differences
 
-1.  **Cryptography Type:**
-    * **RSA (Rivest-Shamir-Adleman):** This is an **asymmetric** algorithm. It uses a key pair: a public key for encryption and a private key for decryption.
-    * **AES (Advanced Encryption Standard):** This is a **symmetric** algorithm. It uses a single secret key for both encryption and decryption.
+1.Cryptography Type:
+    * RSA (Rivest-Shamir-Adleman): This is an asymmetric algorithm. It uses a key pair: a public key for encryption and a private key for decryption.
+    * AES (Advanced Encryption Standard): This is a symmetric algorithm. It uses a single secret key for both encryption and decryption.
 
-2.  **Performance & Speed:**
-    * **RSA:** It is very **slow** and computationally expensive due to the complex mathematics (factoring large prime numbers).
-    * **AES:** It is extremely **fast** and efficient, designed for high-speed hardware and software implementation.
+2.  Performance & Speed:
+    * RSA: It is very slow and computationally expensive due to the complex mathematics (factoring large prime numbers).
+    * AES: It is extremely fast and efficient, designed for high-speed hardware and software implementation.
 
-3.  **Primary Use Case:**
-    * **RSA:** Because it's slow, it is **not** used for bulk data encryption. Its main use is for **secure key exchange** (like in the TLS handshake, to encrypt a symmetric key) and **digital signatures**.
-    * **AES:** Because it's fast, it is the standard for **bulk data encryption**. This includes encrypting files on your disk (FileVault, BitLocker), messages in your chats, and the data in your HTTPS connection *after* the handshake is complete.
+3.  Primary Use Case:
+    * RSA: Because it's slow, it is not used for bulk data encryption. Its main use is for secure key exchange (like in the TLS handshake, to encrypt a symmetric key) and digital signatures.
+    * AES: Because it's fast, it is the standard for bulk data encryption. This includes encrypting files on your disk (FileVault, BitLocker), messages in your chats, and the data in your HTTPS connection after the handshake is complete.
 
 In summary: RSA is for *authenticating* and *exchanging keys* (a slow, one-time setup), while AES is for *encrypting the actual data* (a fast, ongoing process).
+
